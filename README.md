@@ -1,18 +1,5 @@
 # HACKAI_230400
 
-First make a virtual environment by:
-python -3.10 -m venv <name_of_your_env> (in my case it's hackai_env)
-
-#Activation of script
-#Commands to run:
-hackai_env/scripts/activate
-pipenv --python 3.10
-
-#Installation
-pip install pipenv
-pip install flask
-pip install uagents
-pip install Flask-SocketIO
 
 # Temperature Monitoring Application
 
