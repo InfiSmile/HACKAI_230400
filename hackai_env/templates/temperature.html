@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Monitoring</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+</head>
+<body>
+    <h1>Temperature Monitoring</h1>
+    <form action="/main" method="post">
+        <label for="user_id">User ID:</label>
+        <input type="text" name="user_id" required><br><br>
+
+        <label for="location">Location:</label>
+        <input type="text" name="location" required><br><br>
+        
+        <label for="temp_min">Minimum Temperature (°C):</label>
+        <input type="number" name="temp_min" step="0.01" required><br><br>
+        
+        <label for="temp_max">Maximum Temperature (°C):</label>
+        <input type="number" name="temp_max" step="0.01" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Current Temperature:{{temperature}}</h2>
+    <p id="temperature"></p>
+
+    <h2>Alert Status:{{alert_status}}</h2>
+    <p id="alert-status"></p>
+
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port + '/data');
+
+        socket.on('connect', function() {
+            console.log('Connected to WebSocket');
+        });
+
+        socket.on('update_data', function(data) {
+            // Update temperature and alert status on the page
+            document.getElementById('temperature').innerText = 'Temperature: ' + data.temperature + '°C';
+            document.getElementById('alert-status').innerText = 'Alert Status: ' + data.alert_status;
+        });
+    </script>
+</body>
+</html>
