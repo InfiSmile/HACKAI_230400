@@ -61,5 +61,7 @@ To run the Temperature Monitoring Application locally, follow these steps:
    
 **Run the Application**:
 - Execute the `application.py` script to start the Flask application.
+- make sure that you have three files and 1 folder in your environment folder 1. temp_request 2. application 3. alert_request and templates folder
+- run the application.py file after following all the steps
 
 
